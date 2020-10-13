@@ -1,10 +1,10 @@
-import { capturePokemon } from './capture-pokemon.js';
+import { capturePokemon } from './play-page-utils.js';
 
 export function renderPokemon(currentRound){
     console.log('renderPokemon');
 
 
-    console.log(currentRound);
+    // console.log(currentRound);
     let currentArray = [];
     for (let pokemon of currentRound) {
 
@@ -15,12 +15,13 @@ export function renderPokemon(currentRound){
 
         label.classList.add('p-card');
         image.onclick = function () {
-            capturePokemon(pokemon, currentRound);
+            capturePokemon(pokemon);
         }
 
         radioButton.type = 'radio';
         
         image.src = pokemon.url_image;
+        image.classList.add("poke-image");
 
         nameTag.textContent = pokemon.pokemon;
 
