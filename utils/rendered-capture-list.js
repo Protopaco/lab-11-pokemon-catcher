@@ -1,5 +1,7 @@
 
-
+//  renderCaptureList takes the chosen pokemon and roundCount
+// and creates HTML elements to display the chosen pokemon
+// in the captured list
 export function renderCaptureList(pokemon, roundCount){
     let div = document.createElement('div');
     let p = document.createElement('p');

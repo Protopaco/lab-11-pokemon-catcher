@@ -1,5 +1,12 @@
 import { capturePokemon } from './play-page-utils.js';
 
+
+// renderPokemon isn't as gastly as it sounds
+// it iterates through the current generated pokemon
+// and creates HTML elements for the user to choose from
+// it then appends those elements into currentArray, and returns it
+
+
 export function renderPokemon(currentRound){
 
     let currentArray = [];

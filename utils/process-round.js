@@ -1,7 +1,14 @@
 import { getGameData, sendGameData } from '../data/game-data.js';
 
+// processRound takes capturedPokemon and currentRound data 
+// retrieves the current gameData, then
+// a) checks if current pokemon are recoreded in gameData
+// b) if so, it iterates the counts
+// c) if not, it creates a new entry in the gameData
+// d) send gameData back into localStorage
 export function processRound(capturedPokemon, currentRound){
     let gameData = getGameData();
+
     for (let currentPokemon of currentRound){
         let index = findByID(currentPokemon.id, gameData);
         if (index > 0){

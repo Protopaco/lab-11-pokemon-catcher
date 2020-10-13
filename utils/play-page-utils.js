@@ -11,20 +11,24 @@ let roundData = currentRound;
 
 capturedPokemon.innerHTML = '';
 
-
+// capturePokemon is the main driver of the app
+// when user chooses a pokemon, roundCount itterates
+// processRound() is called to record results
+// chosen pokemon is added to the captured list
+// the roundData is collected
+// after 10 rounds of play, user is sent to results page
 export function capturePokemon(chosenPokemon){
     roundCount++;
     processRound(chosenPokemon, currentRound);
 
     let newCaptured = renderCaptureList(chosenPokemon, roundCount);
     capturedPokemon.appendChild(newCaptured);
-    testRounds(currentRound);
+
     roundData.push(currentRound);
     if (roundCount < 10){
         currentRound = displayPokemonCards(currentRound);
     } else {
-        console.log(roundData);
-        //location.href = './results/';
+        location.href = './results/';
     }
 }
 

@@ -1,6 +1,13 @@
 import pokemon from '../data/pokemon.js';
 import pokeArray from '../data/pokemon.js';
 
+
+// generatePokemon() takes in the previous round's pokemon
+// it then creates three new numbers, checking that
+// a) there are no duplicates in current set
+// b) no duplicates with previous set
+// c) within the JSON of given pokemon
+
 export function generatePokemon(lastRound) {
 
     let currentRound = [];
@@ -9,7 +16,7 @@ export function generatePokemon(lastRound) {
             let temp = Math.floor(Math.random() * pokeArray.length);
                 
                 for (let currentPokemon of currentRound){
-                    if (pokeArray[temp].id === currentPokemon.id){
+                    if (pokeArray[temp].id === currentPokemon.id && dupe === false){
                         dupe = true;
                     }
                 }
