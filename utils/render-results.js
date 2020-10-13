@@ -27,12 +27,12 @@ export function renderResults(resultsArray){
 
             nameTag.textContent = name;
             nameTag.classList.add('text')
+            
             viewTag.textContent = 'views: ' +views;
             viewTag.classList.add('text')
 
             captureTag.textContent = 'captures: ' +captures;
             captureTag.classList.add('text')
-
 
             div.appendChild(img);
             div.appendChild(nameTag);
