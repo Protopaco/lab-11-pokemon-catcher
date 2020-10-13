@@ -1,0 +1,24 @@
+body{
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.main-section{
+    width: 90%;
+    min-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-content: center;
+}
+
+#captured-section{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}

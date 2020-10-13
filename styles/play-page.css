@@ -1,0 +1,60 @@
+
+
+#card-section{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+input {
+    display: none;
+}
+.captured{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 100px;
+}
+
+.poke-captured{
+    height: 90px;
+    width: 90px;
+}
+
+.round-num{
+    background-color: white;
+    width: 50px;
+    font-size: 2em;
+    text-align: center;
+    margin: 0;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.poke-image{
+    width: 250px;
+    height: 250px;
+    margin-top: 20px;
+}
+
+.poke-image:hover{
+    transform: scale(1.1);
+}
+label{
+    width: 250px;
+    height: 400px;
+    margin-top: 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+
+
+label > p {
+    font-size: 1.5em;
+    text-align: center;
+}
