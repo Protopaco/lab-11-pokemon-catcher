@@ -6,6 +6,8 @@ import { getById } from './get-by-id.js';
 export function renderChart(keyValue){
     if (keyValue === 'captureCount'){
         return renderCaptured();
+    } else if (keyValue === 'displayCount'){
+        return renderDisplayed();
     }
 
 
@@ -20,6 +22,7 @@ export function renderCaptured(){
     let labels = [];
     let data = [];
     let backgroundColor = [];
+    let label = '# captured'
 
     for (let object of gameData){
         let pokeData = getById(object.id, pokeArray);
@@ -29,10 +32,33 @@ export function renderCaptured(){
         backgroundColor.push(renderColor(pokeData.type_1))
     }
     
-    return [labels, data, backgroundColor];
+    return [labels, data, backgroundColor, label];
     
 }
 
+export function renderDisplayed(){
+    let gameData = getGameData();
+    let labels = [];
+    let data = [];
+    let backgroundColor = [];
+    let label = '# displayed'
+
+
+    for (let object of gameData){
+        let pokeData = getById(object.id, pokeArray);
+
+        labels.push(pokeData.pokemon);
+        data.push(object.displayCount);
+        backgroundColor.push(renderColor(pokeData.type_1))
+    }
+    
+    return [labels, data, backgroundColor, label];
+    
+}
+
+export function renderViewed(){
+    let gameData = getGameData
+}
 
 function renderColor(pokeType){
 
