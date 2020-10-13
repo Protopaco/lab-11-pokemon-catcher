@@ -37,6 +37,8 @@ input{
     margin: none;
     border: 2px solid black;
     border-radius: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
     border-bottom: 0;
     padding-bottom: none;
     align-self: baseline;

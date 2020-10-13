@@ -3,19 +3,11 @@ import pokeArray from '../data/pokemon.js';
 import { getById } from './get-by-id.js';
 
 
-export function renderChart(keyValue){
-    if (keyValue === 'captureCount'){
-        return renderCaptured();
-    } else if (keyValue === 'displayCount'){
-        return renderDisplayed();
-    }
+export function renderChart(object){
 
-
-
+    return object.function();
 
 }
-
-
 
 export function renderCaptured(){
     let gameData = getGameData();
@@ -56,8 +48,23 @@ export function renderDisplayed(){
     
 }
 
-export function renderViewed(){
-    let gameData = getGameData
+export function renderHeight(){
+    let gameData = getGameData();
+    let labels = [];
+    let data = [];
+    let backgroundColor = [];
+    let label = 'PokeHeight'
+
+    for (let object of gameData){
+        let pokeData = getById(object.id, pokeArray);
+
+        labels.push(pokeData.pokemon);
+        data.push(pokeData.height);
+        backgroundColor.push(renderColor(pokeData.type_1))
+    }
+    
+    return [labels, data, backgroundColor, label];
+
 }
 
 function renderColor(pokeType){

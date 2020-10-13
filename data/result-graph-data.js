@@ -1,19 +1,19 @@
-// import { renderCaptured } from '../utils/render-chart.js';
+import { renderCaptured, renderDisplayed, renderHeight } from '../utils/render-chart.js';
 
 export default [
     {
         value: 'captured',
-        key: 'captureCount',
+        function: renderCaptured,
         checked: true,
     },
     {
         value: 'viewed',
-        key: 'displayCount',
+        function: renderDisplayed,
         checked: false,
     },
     {
         value: 'height',
-        key: 'height',
+        function: renderHeight,
         checked: false,
     },
 ]
