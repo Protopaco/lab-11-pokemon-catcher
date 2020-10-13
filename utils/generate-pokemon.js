@@ -14,7 +14,10 @@ export function generatePokemon(lastRound) {
             let tempIndex = Math.floor(Math.random() * pokeArray.length);
             let tempPokemon = pokeArray[tempIndex];
                 
-                if(!getById(tempPokemon, currentRound) && !getById(tempPokemon, lastRound)){
+                if(getById(tempPokemon.id, currentRound)===null && getById(tempPokemon.id, lastRound)===null){
+                    console.log('current:' +getById(tempPokemon.id, currentRound));
+                    console.log('last:' +getById(tempPokemon.id, lastRound));
+
                     currentRound.push(tempPokemon);
                 }
     }

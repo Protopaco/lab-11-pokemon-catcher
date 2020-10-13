@@ -1,5 +1,5 @@
 import { displayPokemonCards } from './display-pokemon-cards.js';
-import { processRound } from './process-round.js';
+import { processCaptured } from './process-round.js';
 import { renderCaptureList } from './rendered-capture-list.js';
 
 const capturedPokemon = document.getElementById('captured-section');
@@ -18,7 +18,7 @@ capturedPokemon.innerHTML = '';
 // after 10 rounds of play, user is sent to results page
 export function capturePokemon(chosenPokemon){
     roundCount++;
-    processRound(chosenPokemon, currentRound);
+    processCaptured(chosenPokemon);
 
     let newCaptured = renderCaptureList(chosenPokemon, roundCount);
     capturedPokemon.appendChild(newCaptured);

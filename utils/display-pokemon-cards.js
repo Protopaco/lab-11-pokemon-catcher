@@ -1,5 +1,7 @@
 import { generatePokemon } from './generate-pokemon.js';
 import { renderPokemon } from './render-pokemon-cards.js';
+import { processDisplayRound } from './process-round.js';
+
 
 // DisplayPokemonCards takes in the previous round's data
 // calles 'generatePokemon()' then renders the cards from
@@ -17,6 +19,8 @@ export function displayPokemonCards(lastRound) {
     for (let card of currentCards){
         displaySection.appendChild(card);
     }
+    processDisplayRound(currentRound);
+
     return currentRound;
     
 }
