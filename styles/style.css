@@ -13,7 +13,6 @@ body{
     flex-direction: column;
     justify-items: center;
     align-content: center;
-    border: 5px solid blue;
 }
 
 #captured-section{
@@ -22,5 +21,4 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    background-color: purple;
 }

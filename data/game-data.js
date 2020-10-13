@@ -1,11 +1,18 @@
 
-let gameData = [];
+let gameKey = 'gameData';
 
 
 export function getGameData(){
-    return gameData;
+    let temp = JSON.parse((localStorage).getItem(gameKey));
+    
+    return ( temp ? temp : []);
+
 }
 
 export function sendGameData(newGameData){
-    gameData = newGameData;
+    localStorage.setItem(gameKey, JSON.stringify(newGameData));
+}
+
+export function clearGameData(){
+    localStorage.removeItem(gameKey);
 }

@@ -1,11 +1,7 @@
 import pokemon from '../data/pokemon.js';
 import pokeArray from '../data/pokemon.js';
 
-
-
 export function generatePokemon(lastRound) {
-
-    console.log('generatePokemon');
 
     let currentRound = [];
         let dupe = false;

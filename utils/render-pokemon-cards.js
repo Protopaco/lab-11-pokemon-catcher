@@ -1,10 +1,7 @@
 import { capturePokemon } from './play-page-utils.js';
 
 export function renderPokemon(currentRound){
-    console.log('renderPokemon');
 
-
-    // console.log(currentRound);
     let currentArray = [];
     for (let pokemon of currentRound) {
 

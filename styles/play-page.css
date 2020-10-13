@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: green;
 }
 
 input {
@@ -18,14 +17,12 @@ input {
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-color: yellowgreen;
     width: 100px;
 }
 
 .poke-captured{
     height: 90px;
     width: 90px;
-    border: 1px solid salmon;
 }
 
 .round-num{
@@ -34,25 +31,29 @@ input {
     font-size: 2em;
     text-align: center;
     margin: 0;
+    border-radius: 10px;
+    border: 1px solid black;
 }
 
 .poke-image{
     width: 250px;
     height: 250px;
 }
+
+.poke-image:hover{
+    transform: scale(1.1);
+}
 label{
     width: 250px;
-    height: 250px;
+    height: 350px;
     margin-top: 20px;
-
+    border: 2px solid black;
+    border-radius: 20px;
 }
 
-input[type="radio"]:checked + img {
-    transform: scale(1.05);
-}
+
 
 label > p {
-    color: white;
     font-size: 1.5em;
     text-align: center;
 }
