@@ -13,7 +13,6 @@ body{
 .spacer{
     height: 50px;
     width: 100%;
-    background-color: tomato;
 }
 .game-choice{
     height: 50px;
@@ -34,7 +33,6 @@ input{
 
 
 .tab-text{
-    width: 1000px;
     padding: 10px;
     margin: none;
     border: 2px solid black;
@@ -49,4 +47,9 @@ input[type="radio"]:checked + span {
     background-color: black;
     color: yellow;
 
+}
+
+#myChart{
+    height: 400px;
+    width: 400px;
 }
