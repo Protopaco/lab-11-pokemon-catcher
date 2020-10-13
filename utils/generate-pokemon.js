@@ -1,4 +1,3 @@
-import pokemon from '../data/pokemon.js';
 import pokeArray from '../data/pokemon.js';
 
 

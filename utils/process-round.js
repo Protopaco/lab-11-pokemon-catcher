@@ -1,4 +1,5 @@
 import { getGameData, sendGameData } from '../data/game-data.js';
+import { getById } from './get-by-id.js';
 
 // processRound takes capturedPokemon and currentRound data 
 // retrieves the current gameData, then
@@ -8,10 +9,12 @@ import { getGameData, sendGameData } from '../data/game-data.js';
 // d) send gameData back into localStorage
 export function processRound(capturedPokemon, currentRound){
     let gameData = getGameData();
-
+    console.log('-----');
     for (let currentPokemon of currentRound){
-        let index = findByID(currentPokemon.id, gameData);
-        if (index > 0){
+
+        let index = getById(currentPokemon.id, gameData);
+        console.log(index);
+        if (index!==null){
             gameData[index].displayCount++;
             if (gameData[index].id === capturedPokemon.id){
                 gameData[index].captureCount++;
@@ -29,15 +32,7 @@ export function processRound(capturedPokemon, currentRound){
             })
         }
     }
+    console.log(gameData);
     sendGameData(gameData);
 }
 
-
-function findByID(id, array){
-    for (let item of array){
-        if (item.id === id){return array.indexOf(item)}
-    }
-    return -1;
-
-
-}

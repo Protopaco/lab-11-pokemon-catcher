@@ -1,4 +1,3 @@
-import { getGameData } from '../data/game-data.js';
 import { displayPokemonCards } from './display-pokemon-cards.js';
 import { processRound } from './process-round.js';
 import { renderCaptureList } from './rendered-capture-list.js';

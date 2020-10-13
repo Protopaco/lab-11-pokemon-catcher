@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/results.css">
+
+    <title>Poke-Results!</title>
 </head>
 <body>
-    RESULTS
-    <button onclick="location.href='../'"">BACK</button>
+    <section class="main-section">
+        <p>last session</p>
+        <section class="results" id="current-term"></section>
+        <p>all-time</p>
+        <section class="results" id="long-term"></section>
+        <br>
+        <section class="buttons">
+            <button id="play-again">play again</button>
+            <button id="clear-results">clear results</button>
+        </section>
+    </section>
+
+    <script type="module" src="../utils/result-utils.js"></script>
+
 </body>
 </html>

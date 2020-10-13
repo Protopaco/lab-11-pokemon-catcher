@@ -38,6 +38,7 @@ input {
 .poke-image{
     width: 250px;
     height: 250px;
+    margin-top: 20px;
 }
 
 .poke-image:hover{
@@ -45,7 +46,7 @@ input {
 }
 label{
     width: 250px;
-    height: 350px;
+    height: 400px;
     margin-top: 20px;
     border: 2px solid black;
     border-radius: 20px;
