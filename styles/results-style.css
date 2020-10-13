@@ -1,0 +1,52 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    height: 150px;
+    border-bottom: 6px solid black;
+    display: grid;
+    grid-row: 50px 50px 50px;
+}
+
+.spacer{
+    height: 50px;
+    width: 100%;
+    background-color: tomato;
+}
+.game-choice{
+    height: 50px;
+    background-color: black;
+    width: 100%;
+}
+
+.result-tab{
+    align-self: baseline;
+    margin: none;
+    padding-bottom: none;
+    margin-right: 10px;
+}
+
+input{
+    display:none;
+}
+
+
+.tab-text{
+    width: 1000px;
+    padding: 10px;
+    margin: none;
+    border: 2px solid black;
+    border-radius: 10px;
+    border-bottom: 0;
+    padding-bottom: none;
+    align-self: baseline;
+
+}
+
+input[type="radio"]:checked + span {
+    background-color: black;
+    color: yellow;
+
+}

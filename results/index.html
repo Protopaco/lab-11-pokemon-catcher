@@ -4,13 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/results.css">
-
+    <link rel="stylesheet" href="../styles/results-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <title>Poke-Results!</title>
 </head>
 <body>
+    <header class="header">
+        <section class="game-choice"></section>
+        <section class="spacer"></section>
+        <section class="tab-section">
+            <label class="result-tab">
+                <input type="radio" name="graph-chooser" value="captured" checked>
+                <span class="tab-text">ugh</span>
+            </label>
+            <label class="result-tab">
+                <input type="radio" name="graph-chooser" value="captured">
+                <span class="tab-text">ugh</span>
+            </label>            <label class="result-tab">
+                <input type="radio" name="graph-chooser" value="captured">
+                <span class="tab-text">ughu</span>
+            </label>
+        </section>
+    </header>
     <section class="main-section">
-        <p>last session</p>
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <!-- <p>last session</p>
         <section class="results" id="current-term"></section>
         <p>all-time</p>
         <section class="results" id="long-term"></section>
@@ -18,10 +36,10 @@
         <section class="buttons">
             <button id="play-again">play again</button>
             <button id="clear-results">clear results</button>
-        </section>
+        </section> -->
     </section>
 
-    <script type="module" src="../utils/result-utils.js"></script>
+    <script type="module" src="../utils/result-app.js"></script>
 
 </body>
 </html>
