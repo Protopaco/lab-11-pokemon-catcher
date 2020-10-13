@@ -14,14 +14,15 @@ export function renderPokemon(currentRound){
         let nameTag = document.createElement('p');
 
         label.classList.add('p-card');
-        image.onclick = function () {
-            capturePokemon(pokemon);
-        }
+
 
         radioButton.type = 'radio';
         
         image.src = pokemon.url_image;
         image.classList.add("poke-image");
+        image.onclick = function () {
+            capturePokemon(pokemon);
+        }
 
         nameTag.textContent = pokemon.pokemon;
 

@@ -12,8 +12,31 @@
 input {
     display: none;
 }
+.captured{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: yellowgreen;
+    width: 100px;
+}
 
-img{
+.poke-captured{
+    height: 90px;
+    width: 90px;
+    border: 1px solid salmon;
+}
+
+.round-num{
+    background-color: white;
+    width: 50px;
+    font-size: 2em;
+    text-align: center;
+    margin: 0;
+}
+
+.poke-image{
     width: 250px;
     height: 250px;
 }
@@ -21,7 +44,7 @@ label{
     width: 250px;
     height: 250px;
     margin-top: 20px;
-    
+
 }
 
 input[type="radio"]:checked + img {

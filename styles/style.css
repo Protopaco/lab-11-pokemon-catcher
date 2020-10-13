@@ -8,7 +8,7 @@ body{
 
 .main-section{
     width: 90%;
-    min-width: 800px;
+    min-width: 1000px;
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -19,8 +19,8 @@ body{
 #captured-section{
     width: 100%;
     height: 200px;
-    display: grid;
-    grid-auto-rows: 1fr;
-    margin-bottom: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     background-color: purple;
 }
