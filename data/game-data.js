@@ -36,10 +36,10 @@ export function combineData(){
     let longTermData = getLTData();
 
     for (let current of currentData) {
-        let index = getById(current.id, longTermData);
-        if (index!==null){
-            longTermData[index].displayCount += current.displayCount;
-            longTermData[index].captureCount += current.captureCount;
+        let LTObject = getById(current.id, longTermData);
+        if (LTObject){
+            LTObject.displayCount += current.displayCount;
+            LTObject.captureCount += current.captureCount;
         } else {
             longTermData.push({
                 id: current.id,

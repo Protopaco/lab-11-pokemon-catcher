@@ -1,15 +1,15 @@
 import { getGameData, sendGameData } from '../data/game-data.js';
 import { getById } from './get-by-id.js';
 
-
+// increments displayCounter after cards are generated
 export function processDisplayRound(currentRound){
     let gameData = getGameData();
 
     for (let currentPokemon of currentRound){
-        let index = getById(currentPokemon.id, gameData);
+        let pokemonObject = getById(currentPokemon.id, gameData);
 
-        if (index!==null){
-            gameData[index].displayCount++;
+        if (pokemonObject){
+            pokemonObject.displayCount++;
         } else {
             gameData.push({
                 id: currentPokemon.id,
@@ -21,12 +21,12 @@ export function processDisplayRound(currentRound){
     sendGameData(gameData);
 }
 
-
+// increments captureCounter after pokemon is selected
 export function processCaptured(capturedPokemon){
     let gameData = getGameData();
+    let pokemonObject = getById(capturedPokemon.id, gameData);
 
-    let index = getById(capturedPokemon.id, gameData)
-    gameData[index].captureCount++;
+    pokemonObject.captureCount++;
     sendGameData(gameData);
 }
 
