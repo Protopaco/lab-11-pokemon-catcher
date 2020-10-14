@@ -19,6 +19,30 @@ export default [
         function: 'infoFromPokeArray',
         checked: false,
     },
+    {
+        value: 'weight',
+        key: 'weight',
+        function: 'infoFromPokeArray',
+        checked: false,
+    },
+    {
+        value: 'base experience',
+        key: 'base_experience',
+        function: 'infoFromPokeArray',
+        checked: false,
+    },    
+    {
+        value: 'hit points',
+        key: 'hp',
+        function: 'infoFromPokeArray',
+        checked: false,
+    },
+    {
+        value: 'speed',
+        key: 'speed',
+        function: 'infoFromPokeArray',
+        checked: false,
+    }
 ]
 
 

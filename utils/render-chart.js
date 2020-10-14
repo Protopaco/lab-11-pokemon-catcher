@@ -51,15 +51,15 @@ export function infoFromPokeArray(dataSet, key, passedLabel){
 function renderColor(pokeType){
 
     if (pokeType === 'grass'){
-        return '#28d900';
+        return '#78C850';
     } else if (pokeType === 'fire'){
-        return '#d90000';
+        return '#F08030';
     } else if (pokeType === 'water'){
-        return '#00ced9';
+        return '#6890F0';
     } else if (pokeType === 'normal'){
-        return '#d99400';
+        return '#A8A878';
     } else if (pokeType === 'bug'){
-        return '#6500d9';
+        return '#A8B820';
     } else {
         return '#0091d9';
     }
