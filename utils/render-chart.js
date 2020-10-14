@@ -3,88 +3,45 @@ import pokeArray from '../data/pokemon.js';
 import { getById } from './get-by-id.js';
 
 
-export function renderChart(object){
-    // const dataChoice = document.getElementsByName('game');
-    // for (let radio of dataChoice){
-    //     radio.addEventListener('change', (e) => {
-    //        let whichData = e.target.value;
-    //        console.log(whichData);
-    //     })
-    // }
-    let whichData = 'current';
-    return object.function(whichData);
+export function renderChart(object, dataSet){
+
+    return object.function(dataSet, object.key, object.value);
 }
 
-export function renderCaptured(whichData){    
-    let gameData = getGameData();
+export function infoFromGameData(dataSet, key, passedLabel){    
     let labels = [];
     let data = [];
     let backgroundColor = [];
-    let label = '# captured'
-    console.log(whichData);
+    let label = passedLabel;
+    // console.log(whichData);
 
-    if (whichData === 'long-term'){
-        console.log('LT');
-        gameData = getLTData();
-    } 
-
-    for (let object of gameData){
+    for (let object of dataSet){
         let pokeData = getById(object.id, pokeArray);
 
         labels.push(pokeData.pokemon);
-        data.push(object.captureCount);
+        data.push(object[key]);
         backgroundColor.push(renderColor(pokeData.type_1))
     }
-    
-    return [labels, data, backgroundColor, label];
-    
-}
 
-export function renderDisplayed(whichData){
-    let gameData = getGameData();
+    return [labels, data, backgroundColor, label];
+    }
+
+export function infoFromPokeArray(dataSet, key, passedLabel){    
     let labels = [];
     let data = [];
     let backgroundColor = [];
-    let label = '# displayed'
+    let label = passedLabel;
+    // console.log(whichData);
 
-    if (whichData === 'long-term'){
-        gameData = getLTData();
-    } 
-
-
-    for (let object of gameData){
+    for (let object of dataSet){
         let pokeData = getById(object.id, pokeArray);
 
         labels.push(pokeData.pokemon);
-        data.push(object.displayCount);
+        data.push(pokeData[key]);
         backgroundColor.push(renderColor(pokeData.type_1))
     }
-    
     return [labels, data, backgroundColor, label];
     
-}
-
-export function renderHeight(whichData){
-    let gameData = getGameData();
-    let labels = [];
-    let data = [];
-    let backgroundColor = [];
-    let label = 'PokeHeight'
-
-    if (whichData === 'long-term'){
-        gameData = getLTData();
-    } 
-
-    for (let object of gameData){
-        let pokeData = getById(object.id, pokeArray);
-
-        labels.push(pokeData.pokemon);
-        data.push(pokeData.height);
-        backgroundColor.push(renderColor(pokeData.type_1))
-    }
-    
-    return [labels, data, backgroundColor, label];
-
 }
 
 function renderColor(pokeType){

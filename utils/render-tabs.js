@@ -1,4 +1,4 @@
-import { prepareChart } from './result-app.js';
+import { renderCanvas } from './render-canvas.js';
 import tabArray from '../data/result-graph-data.js';
 
 
@@ -16,7 +16,7 @@ export function renderTabs(){
     radio.name = 'graph-chooser';
     radio.value = tab.value;
     radio.onclick = function () {
-        prepareChart(tab);
+        renderCanvas(tab);
     }
     
     if (tab.checked) {
