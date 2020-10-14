@@ -4,6 +4,7 @@ let gameKey = 'gameData';
 let longTerm = 'longTermGD';
 let dataVersion = 'dataVersion';
 let chartSelection = 'chartSelection';
+let sortDirection = 'sortDirection';
 
 
 export function getGameData(){
@@ -68,4 +69,12 @@ export function setChartSelection(chartObject){
 
 export function getChartSelection(){
     return JSON.parse(localStorage.getItem(chartSelection));
+}
+
+export function setSortDirection(directionChoice){
+    localStorage.setItem(sortDirection, JSON.stringify(directionChoice));
+}
+
+export function getSortDirection(){
+    return JSON.parse(localStorage.getItem(sortDirection));
 }

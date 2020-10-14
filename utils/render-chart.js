@@ -14,7 +14,6 @@ export function renderChart(){
     } else if (object.function === 'infoFromPokeArray'){
         return infoFromPokeArray(dataSet, object.key, object.value);
     }
-    // return object.function(dataSet, object.key, object.value);
 }
 
 export function infoFromGameData(dataSet, passedKey, passedLabel){ 
@@ -26,9 +25,11 @@ export function infoFromGameData(dataSet, passedKey, passedLabel){
 
     for (let object of dataSet){
         let pokeData = getById(object.id, pokeArray);
-        labels.push(pokeData.pokemon);
-        data.push(object[passedKey]);
-        backgroundColor.push(renderColor(pokeData.type_1))
+        if(object[passedKey] > 0){
+            labels.push(pokeData.pokemon);
+            data.push(object[passedKey]);
+            backgroundColor.push(renderColor(pokeData.type_1))
+        }
     }
     return [labels, data, backgroundColor, label];
     }
@@ -48,9 +49,6 @@ export function infoFromPokeArray(dataSet, passedKey, passedLabel){
             color: renderColor(pokeData.type_1)
         }
         unsortedArray.push(tempObject)
-        // labels.push(pokeData.pokemon);
-        // data.push(pokeData[passedKey]);
-        // backgroundColor.push(renderColor(pokeData.type_1))
     }
     let sortedArray = dataSort('data', unsortedArray, '>');
     for (let sortedObject of sortedArray){
@@ -58,7 +56,6 @@ export function infoFromPokeArray(dataSet, passedKey, passedLabel){
         data.push(sortedObject['data']);
         backgroundColor.push(sortedObject['color']);
     }
-
     return [labels, data, backgroundColor, label];
     
 }
