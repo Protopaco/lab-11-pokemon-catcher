@@ -6,13 +6,13 @@ export function renderResults(resultsArray){
     let returnArray = [];
 
     for (let results of resultsArray){
-        let index = getById(results.id, pokeArray);
+        let resultObject = getById(results.id, pokeArray);
 
-        if (index!==null) {
-            let name = pokeArray[index].pokemon;
+        if (resultObject) {
+            let name = resultObject.pokemon;
             let views = results.displayCount;
             let captures = results.captureCount;
-            let img_src = pokeArray[index].url_image;
+            let img_src = resultObject.url_image;
 
             let div = document.createElement('div');
             let img = document.createElement('img');
@@ -27,12 +27,12 @@ export function renderResults(resultsArray){
 
             nameTag.textContent = name;
             nameTag.classList.add('text')
+            
             viewTag.textContent = 'views: ' +views;
             viewTag.classList.add('text')
 
             captureTag.textContent = 'captures: ' +captures;
             captureTag.classList.add('text')
-
 
             div.appendChild(img);
             div.appendChild(nameTag);

@@ -1,5 +1,5 @@
 import pokeArray from '../data/pokemon.js';
-
+import { getById } from './get-by-id.js';
 
 // generatePokemon() takes in the previous round's pokemon
 // it then creates three new numbers, checking that
@@ -10,24 +10,14 @@ import pokeArray from '../data/pokemon.js';
 export function generatePokemon(lastRound) {
 
     let currentRound = [];
-        let dupe = false;
         while (currentRound.length < 3){
-            let temp = Math.floor(Math.random() * pokeArray.length);
+            let tempIndex = Math.floor(Math.random() * pokeArray.length);
+            let tempPokemon = pokeArray[tempIndex];
                 
-                for (let currentPokemon of currentRound){
-                    if (pokeArray[temp].id === currentPokemon.id && dupe === false){
-                        dupe = true;
-                    }
+                if(getById(tempPokemon.id, currentRound)===null && getById(tempPokemon.id, lastRound)===null){
+                    currentRound.push(tempPokemon);
                 }
-                for (let lastPokemon of lastRound){
-                    if (pokeArray[temp].id === lastPokemon.id){
-                        dupe = true;
-                    }
-                }
-                if (!dupe) {
-                    currentRound.push(pokeArray[temp]);
-                }
-            dupe = false;
     }
     return currentRound;
 }
+

@@ -1,6 +1,5 @@
 import { capturePokemon } from './play-page-utils.js';
 import { getGameData } from '../data/game-data.js';
-import pokeArray from '../data/pokemon.js';
 import { getById } from './get-by-id.js';
 
 
@@ -22,7 +21,6 @@ export function renderPokemon(currentRound){
         let stats = pokeStats(pokemon);
 
         label.classList.add('p-card');
-
 
         radioButton.type = 'radio';
         
@@ -48,11 +46,11 @@ function pokeStats(pokemon){
     let gameData = getGameData();
     let captures = 0;
     let views = 0;
-    let index = getById(pokemon.id, gameData);
+    let pokemonData = getById(pokemon.id, gameData);
     
-    if (index!==null) {
-        views = gameData[index].displayCount;
-        captures = gameData[index].captureCount;
+    if (pokemonData) {
+        views = pokemonData.displayCount;
+        captures = pokemonData.captureCount;
     }
 
     let stats = document.createElement('p');
