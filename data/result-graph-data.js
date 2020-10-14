@@ -15,7 +15,13 @@ export default [
     },
     {
         value: 'types captured',
-        key: "",
+        key: "captureCount",
+        function: 'typesCaptured',
+        checked: false,
+    },
+    {
+        value: 'types viewed',
+        key: "displayCount",
         function: 'typesCaptured',
         checked: false,
     },

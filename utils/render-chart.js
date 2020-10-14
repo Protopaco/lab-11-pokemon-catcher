@@ -11,7 +11,7 @@ export function renderChart(){
     if (object.function === 'infoFromGameData'){
         return infoFromGameData(dataSet, object.key, object.value);
     } else if (object.function === 'typesCaptured'){
-        return typesCaptured(dataSet, object.value);
+        return typesCaptured(dataSet, object.key, object.value);
     } else if (object.function === 'infoFromPokeArray'){
         return infoFromPokeArray(dataSet, object.key, object.value);
     }
@@ -50,7 +50,7 @@ export function infoFromPokeArray(dataSet, key, passedLabel){
     
 }
 
-export function typesCaptured(dataSet, passedLabel){
+export function typesCaptured(dataSet, passedKey, passedLabel){
     let labels = [];
     let typeJSON = {};
     let data = [];
@@ -60,10 +60,10 @@ export function typesCaptured(dataSet, passedLabel){
     for (let object of dataSet){
         let pokeData = getById(object.id, pokeArray);
         if (!typeJSON[pokeData.type_1]){
-            typeJSON[pokeData.type_1] = object.captureCount;
+            typeJSON[pokeData.type_1] = object[passedKey];
             backgroundColor.push(renderColor(pokeData.type_1))
         } else {
-            typeJSON[pokeData.type_1] += object.captureCount;
+            typeJSON[pokeData.type_1] += object[passedKey];
         }
     }
 
