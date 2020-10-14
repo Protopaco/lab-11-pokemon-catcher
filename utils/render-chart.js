@@ -9,9 +9,12 @@ export function renderChart(){
     let dataSet = getDataSet();
     dataSet = dataSort('id' ,dataSet);
     if (object.function === 'infoFromGameData'){
-        return infoFromGameData(dataSet, object.key, object.value)
+        return infoFromGameData(dataSet, object.key, object.value);
+    } else if (object.function === 'typesCaptured'){
+        return typesCaptured(dataSet, object.value);
+    } else if (object.function === 'infoFromPokeArray'){
+        return infoFromPokeArray(dataSet, object.key, object.value);
     }
-    return infoFromPokeArray(dataSet, object.key, object.value);
     // return object.function(dataSet, object.key, object.value);
 }
 
@@ -27,7 +30,6 @@ export function infoFromGameData(dataSet, key, passedLabel){
         data.push(object[key]);
         backgroundColor.push(renderColor(pokeData.type_1))
     }
-
     return [labels, data, backgroundColor, label];
     }
 
@@ -46,6 +48,28 @@ export function infoFromPokeArray(dataSet, key, passedLabel){
     }
     return [labels, data, backgroundColor, label];
     
+}
+
+export function typesCaptured(dataSet, passedLabel){
+    let labels = [];
+    let typeJSON = {};
+    let data = [];
+    let backgroundColor = [];
+    let label = passedLabel;
+
+    for (let object of dataSet){
+        let pokeData = getById(object.id, pokeArray);
+        if (!typeJSON[pokeData.type_1]){
+            typeJSON[pokeData.type_1] = object.captureCount;
+            backgroundColor.push(renderColor(pokeData.type_1))
+        } else {
+            typeJSON[pokeData.type_1] += object.captureCount;
+        }
+    }
+
+    labels = Object.keys(typeJSON);
+    data = Object.values(typeJSON);
+    return [labels, data, backgroundColor, label];
 }
 
 function renderColor(pokeType){

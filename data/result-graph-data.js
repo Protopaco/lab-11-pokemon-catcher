@@ -14,6 +14,12 @@ export default [
         checked: false,
     },
     {
+        value: 'types captured',
+        key: "",
+        function: 'typesCaptured',
+        checked: false,
+    },
+    {
         value: 'height',
         key: 'height',
         function: 'infoFromPokeArray',
