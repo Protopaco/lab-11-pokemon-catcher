@@ -1,3 +1,4 @@
+import { combineData } from '../data/game-data.js';
 import { displayPokemonCards } from './display-pokemon-cards.js';
 import { processCaptured } from './process-round.js';
 import { renderCaptureList } from './rendered-capture-list.js';
@@ -28,6 +29,7 @@ export function capturePokemon(chosenPokemon){
         currentRound = displayPokemonCards(currentRound);
     } else {
         location.href = './results/';
+        combineData();
     }
 }
 

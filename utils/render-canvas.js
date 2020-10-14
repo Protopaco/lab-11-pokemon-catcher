@@ -1,10 +1,9 @@
-import { getGameData, getLTData } from '../data/game-data.js';
+import { getChartVersionSelection, getGameData, getLTData } from '../data/game-data.js';
 import { renderChart } from './render-chart.js';
 
 
-export function renderCanvas(object) {
-    let dataSet = getDataSet();
-    let chartData = renderChart(object, dataSet);
+export function renderCanvas() {
+    let chartData = renderChart();
     let labels = chartData[0];
     let data = chartData[1];
     let backgroundColor = chartData[2];
@@ -35,28 +34,5 @@ export function renderCanvas(object) {
             }
         }
     });
-
-}
-
-function getDataSet(){
-    let whichData = 'current';
-    let dataSet = getGameData();
-
-    if (whichData === 'long-term'){
-        dataSet = getLTData();
-    } 
-    return dataSet;
-}
-
-function chooseData() {
-    let whichData = '';
-    const dataChoice = document.getElementsByName('game');
-    for (let radio of dataChoice){
-        radio.addEventListener('change', (e) => {
-           whichData = e.target.value;
-           console.log(whichData);
-        })
-    }
-    return whichData;
 
 }

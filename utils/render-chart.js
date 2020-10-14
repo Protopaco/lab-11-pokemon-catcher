@@ -1,11 +1,16 @@
-import { getGameData, getLTData } from '../data/game-data.js'
+import { getChartSelection, getChartVersionSelection, getGameData, getLTData } from '../data/game-data.js';
 import pokeArray from '../data/pokemon.js';
 import { getById } from './get-by-id.js';
 
 
-export function renderChart(object, dataSet){
-
-    return object.function(dataSet, object.key, object.value);
+export function renderChart(){
+    let object = getChartSelection();
+    let dataSet = getDataSet();
+    if (object.function === 'infoFromGameData'){
+        return infoFromGameData(dataSet, object.key, object.value)
+    }
+    return infoFromPokeArray(dataSet, object.key, object.value);
+    // return object.function(dataSet, object.key, object.value);
 }
 
 export function infoFromGameData(dataSet, key, passedLabel){    
@@ -13,11 +18,9 @@ export function infoFromGameData(dataSet, key, passedLabel){
     let data = [];
     let backgroundColor = [];
     let label = passedLabel;
-    // console.log(whichData);
 
     for (let object of dataSet){
         let pokeData = getById(object.id, pokeArray);
-
         labels.push(pokeData.pokemon);
         data.push(object[key]);
         backgroundColor.push(renderColor(pokeData.type_1))
@@ -31,7 +34,6 @@ export function infoFromPokeArray(dataSet, key, passedLabel){
     let data = [];
     let backgroundColor = [];
     let label = passedLabel;
-    // console.log(whichData);
 
     for (let object of dataSet){
         let pokeData = getById(object.id, pokeArray);
@@ -59,4 +61,13 @@ function renderColor(pokeType){
     } else {
         return '#0091d9';
     }
+}
+
+
+function getDataSet(){
+    let version = getGameData();
+    if(getChartVersionSelection() === 'getLTData'){
+        version = getLTData();
+    };
+    return version;
 }
