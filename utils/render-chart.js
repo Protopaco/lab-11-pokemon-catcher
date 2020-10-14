@@ -7,7 +7,6 @@ import { dataSort } from '../data/data-sort.js';
 export function renderChart(){
     let object = getChartSelection();
     let dataSet = getDataSet();
-    dataSet = dataSort('id' ,dataSet);
     if (object.function === 'infoFromGameData'){
         return infoFromGameData(dataSet, object.key, object.value);
     } else if (object.function === 'typesCaptured'){
@@ -18,7 +17,8 @@ export function renderChart(){
     // return object.function(dataSet, object.key, object.value);
 }
 
-export function infoFromGameData(dataSet, key, passedLabel){    
+export function infoFromGameData(dataSet, passedKey, passedLabel){ 
+    dataSet = dataSort(passedKey, dataSet, '>');
     let labels = [];
     let data = [];
     let backgroundColor = [];
@@ -27,13 +27,14 @@ export function infoFromGameData(dataSet, key, passedLabel){
     for (let object of dataSet){
         let pokeData = getById(object.id, pokeArray);
         labels.push(pokeData.pokemon);
-        data.push(object[key]);
+        data.push(object[passedKey]);
         backgroundColor.push(renderColor(pokeData.type_1))
     }
     return [labels, data, backgroundColor, label];
     }
 
-export function infoFromPokeArray(dataSet, key, passedLabel){    
+export function infoFromPokeArray(dataSet, passedKey, passedLabel){    
+    let unsortedArray = [];
     let labels = [];
     let data = [];
     let backgroundColor = [];
@@ -41,16 +42,29 @@ export function infoFromPokeArray(dataSet, key, passedLabel){
 
     for (let object of dataSet){
         let pokeData = getById(object.id, pokeArray);
-
-        labels.push(pokeData.pokemon);
-        data.push(pokeData[key]);
-        backgroundColor.push(renderColor(pokeData.type_1))
+        let tempObject = {
+            labels: pokeData.pokemon,
+            data: pokeData[passedKey],
+            color: renderColor(pokeData.type_1)
+        }
+        unsortedArray.push(tempObject)
+        // labels.push(pokeData.pokemon);
+        // data.push(pokeData[passedKey]);
+        // backgroundColor.push(renderColor(pokeData.type_1))
     }
+    let sortedArray = dataSort('data', unsortedArray, '>');
+    for (let sortedObject of sortedArray){
+        labels.push(sortedObject['labels']);
+        data.push(sortedObject['data']);
+        backgroundColor.push(sortedObject['color']);
+    }
+
     return [labels, data, backgroundColor, label];
     
 }
 
 export function typesCaptured(dataSet, passedKey, passedLabel){
+
     let labels = [];
     let typeJSON = {};
     let data = [];
@@ -60,15 +74,19 @@ export function typesCaptured(dataSet, passedKey, passedLabel){
     for (let object of dataSet){
         let pokeData = getById(object.id, pokeArray);
         if (!typeJSON[pokeData.type_1]){
-            typeJSON[pokeData.type_1] = object[passedKey];
-            backgroundColor.push(renderColor(pokeData.type_1))
+            typeJSON[pokeData.type_1] = [object[passedKey], renderColor(pokeData.type_1)];
         } else {
-            typeJSON[pokeData.type_1] += object[passedKey];
+            typeJSON[pokeData.type_1][0] += object[passedKey];
         }
     }
 
-    labels = Object.keys(typeJSON);
-    data = Object.values(typeJSON);
+    let sortableArray = Object.keys(typeJSON).map(key => ({labels: key, data: typeJSON[key][0], color: typeJSON[key][1]}));
+    sortableArray = dataSort('data', sortableArray, '>');
+    for (let sortedObject of sortableArray){
+        labels.push(sortedObject['labels']);
+        data.push(sortedObject['data']);
+        backgroundColor.push(sortedObject['color']);
+    }
     return [labels, data, backgroundColor, label];
 }
 
