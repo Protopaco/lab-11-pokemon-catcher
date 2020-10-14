@@ -10,7 +10,22 @@
 </head>
 <body>
     <header class="header">
-        <section class="game-choice"></section>
+        <section class="top-row">
+            <section class="game-choice">
+                <label>
+                    <input type='radio' name='game' value="current" checked>
+                    <span class='game-text'>last game</span>
+                </label>
+                <label>
+                    <input type='radio' name='game' value="long-term">
+                    <span class='game-text'>all time</span>
+                </label>
+            </section>
+            <section class="buttons">
+                <button id="play-again">play again</button>
+                <button id="clear-results">clear results</button>
+            </section>
+        </section>
         <section class="spacer"></section>
         <section id="tab-section"></section>
     </header>

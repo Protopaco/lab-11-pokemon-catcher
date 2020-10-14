@@ -1,20 +1,32 @@
-import { getGameData } from '../data/game-data.js'
+import { getGameData, getLTData } from '../data/game-data.js'
 import pokeArray from '../data/pokemon.js';
 import { getById } from './get-by-id.js';
 
 
 export function renderChart(object){
-
-    return object.function();
-
+    // const dataChoice = document.getElementsByName('game');
+    // for (let radio of dataChoice){
+    //     radio.addEventListener('change', (e) => {
+    //        let whichData = e.target.value;
+    //        console.log(whichData);
+    //     })
+    // }
+    let whichData = 'current';
+    return object.function(whichData);
 }
 
-export function renderCaptured(){
+export function renderCaptured(whichData){    
     let gameData = getGameData();
     let labels = [];
     let data = [];
     let backgroundColor = [];
     let label = '# captured'
+    console.log(whichData);
+
+    if (whichData === 'long-term'){
+        console.log('LT');
+        gameData = getLTData();
+    } 
 
     for (let object of gameData){
         let pokeData = getById(object.id, pokeArray);
@@ -28,12 +40,16 @@ export function renderCaptured(){
     
 }
 
-export function renderDisplayed(){
+export function renderDisplayed(whichData){
     let gameData = getGameData();
     let labels = [];
     let data = [];
     let backgroundColor = [];
     let label = '# displayed'
+
+    if (whichData === 'long-term'){
+        gameData = getLTData();
+    } 
 
 
     for (let object of gameData){
@@ -48,12 +64,16 @@ export function renderDisplayed(){
     
 }
 
-export function renderHeight(){
+export function renderHeight(whichData){
     let gameData = getGameData();
     let labels = [];
     let data = [];
     let backgroundColor = [];
     let label = 'PokeHeight'
+
+    if (whichData === 'long-term'){
+        gameData = getLTData();
+    } 
 
     for (let object of gameData){
         let pokeData = getById(object.id, pokeArray);

@@ -17,7 +17,6 @@ export function renderTabs(){
     radio.value = tab.value;
     radio.onclick = function () {
         prepareChart(tab);
-        console.log(tab);
     }
     
     if (tab.checked) {
