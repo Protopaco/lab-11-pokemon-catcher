@@ -1,11 +1,13 @@
 import { getChartSelection, getChartVersionSelection, getGameData, getLTData } from '../data/game-data.js';
 import pokeArray from '../data/pokemon.js';
 import { getById } from './get-by-id.js';
+import { dataSort } from '../data/data-sort.js';
 
 
 export function renderChart(){
     let object = getChartSelection();
     let dataSet = getDataSet();
+    dataSet = dataSort('id' ,dataSet);
     if (object.function === 'infoFromGameData'){
         return infoFromGameData(dataSet, object.key, object.value)
     }

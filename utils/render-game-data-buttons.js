@@ -24,7 +24,6 @@ export function renderGameDataButtons(){
         span.textContent = dataOption.textContent;
         span.onclick = function () {
             setChartVersionSelection(dataOption.function);
-            console.log(dataOption.function);
             renderCanvas();
         }
 

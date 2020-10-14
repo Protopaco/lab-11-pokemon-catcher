@@ -1,5 +1,6 @@
 import { clearGameData, clearLTData, combineData, setChartSelection, setChartVersionSelection } from '../data/game-data.js'
 import { renderCanvas } from './render-canvas.js';
+import { dataSort } from '../data/data-sort.js';
 import dataOptions from '../data/data-view-options.js';
 import tabArray from '../data/result-graph-data.js';
 import { renderGameDataButtons } from './render-game-data-buttons.js';
