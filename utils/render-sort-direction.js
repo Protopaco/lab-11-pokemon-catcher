@@ -4,7 +4,7 @@ import { renderCanvas } from "./render-canvas.js";
 
 export function renderSortDirection() {
     let sortChoiceSection = document.getElementById('sort-direction');
-    let options = ['>', '<'];
+    let options = [['>', true], ['<', false]];
 
     for (let option of options){
         let label = document.createElement('label');
@@ -13,21 +13,19 @@ export function renderSortDirection() {
 
         input.type = 'radio';
         input.name = 'sort';
-        input.value = option;
-        // if (dataOption.checked){
-        //     input.checked = true;
-        // }
+        input.value = option[0];
+        input.checked = option[1];
+        
 
         span.classList.add('game-text');
-        span.textContent = option;
+        span.textContent = option[0];
         span.onclick = function () {
-            setSortDirection(option)
+            setSortDirection(option[0])
             renderCanvas();
         }
 
         label.appendChild(input);
         label.appendChild(span)
         sortChoiceSection.appendChild(label);
-        console.log(sortChoiceSection);
     }
 }
