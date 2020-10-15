@@ -8,12 +8,13 @@ export function renderCanvas() {
     let data = chartData[1];
     let backgroundColor = chartData[2];
     let label = chartData[3];
+    let type = chartData[4];
 
     var ctx = document.getElementById('myChart').getContext('2d');
 
     // let chart = document.createElement('chart');
     new Chart(ctx, {
-        type: 'bar',
+        type: type,
         data: {
             labels: labels,
             datasets: [{
@@ -25,6 +26,9 @@ export function renderCanvas() {
             }]
         },
         options: {
+            events: [],
+            tooltips: {enabled: false},
+            hover: {mode: null},
             scales: {
                 yAxes: [{
                     ticks: {
@@ -36,3 +40,4 @@ export function renderCanvas() {
     });
 
 }
+

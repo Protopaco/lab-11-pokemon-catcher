@@ -6,17 +6,18 @@ import { dataSort } from '../data/data-sort.js';
 
 export function renderChart(){
     let object = getChartSelection();
+    console.log(object.type);
     let dataSet = getDataSet();
     if (object.function === 'infoFromGameData'){
-        return infoFromGameData(dataSet, object.key, object.value);
+        return infoFromGameData(dataSet, object.key, object.value, object.type);
     } else if (object.function === 'typesCaptured'){
-        return typesCaptured(dataSet, object.key, object.value);
+        return typesCaptured(dataSet, object.key, object.value, object.type);
     } else if (object.function === 'infoFromPokeArray'){
-        return infoFromPokeArray(dataSet, object.key, object.value);
+        return infoFromPokeArray(dataSet, object.key, object.value, object.type);
     }
 }
 
-export function infoFromGameData(dataSet, passedKey, passedLabel){ 
+export function infoFromGameData(dataSet, passedKey, passedLabel, passedType){ 
     dataSet = dataSort(passedKey, dataSet, '>');
     let labels = [];
     let data = [];
@@ -31,10 +32,10 @@ export function infoFromGameData(dataSet, passedKey, passedLabel){
             backgroundColor.push(renderColor(pokeData.type_1))
         }
     }
-    return [labels, data, backgroundColor, label];
+    return [labels, data, backgroundColor, label, passedType];
     }
 
-export function infoFromPokeArray(dataSet, passedKey, passedLabel){    
+export function infoFromPokeArray(dataSet, passedKey, passedLabel, passedType){    
     let unsortedArray = [];
     let labels = [];
     let data = [];
@@ -56,11 +57,11 @@ export function infoFromPokeArray(dataSet, passedKey, passedLabel){
         data.push(sortedObject['data']);
         backgroundColor.push(sortedObject['color']);
     }
-    return [labels, data, backgroundColor, label];
+    return [labels, data, backgroundColor, label, passedType];
     
 }
 
-export function typesCaptured(dataSet, passedKey, passedLabel){
+export function typesCaptured(dataSet, passedKey, passedLabel, passedType){
 
     let labels = [];
     let typeJSON = {};
@@ -84,7 +85,7 @@ export function typesCaptured(dataSet, passedKey, passedLabel){
         data.push(sortedObject['data']);
         backgroundColor.push(sortedObject['color']);
     }
-    return [labels, data, backgroundColor, label];
+    return [labels, data, backgroundColor, label, passedType];
 }
 
 function renderColor(pokeType){

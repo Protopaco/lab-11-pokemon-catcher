@@ -8,8 +8,17 @@ body{
     border-bottom: 6px solid black;
     display: grid;
     grid-row: 50px 50px 50px;
-    width: 90%;
+    width: 1000px;
     justify-self: center;
+}
+
+canvas{
+    width: 1000px;
+    justify-self: center;
+}
+
+chart{
+    list-style: none;
 }
 
 .spacer{

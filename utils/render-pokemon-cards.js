@@ -8,7 +8,6 @@ import { getById } from './get-by-id.js';
 // and creates HTML elements for the user to choose from
 // it then appends those elements into currentArray, and returns it
 
-
 export function renderPokemon(currentRound){
 
     let currentArray = [];

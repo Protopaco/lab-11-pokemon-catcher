@@ -34,6 +34,3 @@ playButton.addEventListener('click', function () {
     clearGameData();
     location.href="../";
 })
-
-// var ctx = document.getElementById('myChart').getContext('2d');
-// new Chart(ctx, renderCanvas)
