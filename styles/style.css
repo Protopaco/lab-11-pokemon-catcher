@@ -1,18 +1,23 @@
 body{
-    background-color: yellow;
+    
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    background-color: #3B4CCA;
+
 }
 
 .main-section{
-    width: 90%;
-    min-width: 1000px;
+    background-color: #FFDE00;
+    width: 1000px;
+
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-content: center;
+    border-radius: 25px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 50px;
 }
 
 #captured-section{

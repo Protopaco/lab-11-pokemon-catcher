@@ -4,12 +4,20 @@ import { processCaptured } from './process-round.js';
 import { renderCaptureList } from './rendered-capture-list.js';
 
 const capturedPokemon = document.getElementById('captured-section');
+const cardSection = document.getElementById('card-section');
+const resultsButton = document.getElementById('results');
 
 let roundCount = 0;
 let currentRound = displayPokemonCards([]);
 let roundData = currentRound;
 
 capturedPokemon.innerHTML = '';
+
+resultsButton.addEventListener('click', function () {
+    location.href = './results/';
+    combineData();
+
+})
 
 // capturePokemon is the main driver of the app
 // when user chooses a pokemon, roundCount itterates
@@ -28,8 +36,13 @@ export function capturePokemon(chosenPokemon){
     if (roundCount < 10){
         currentRound = displayPokemonCards(currentRound);
     } else {
-        location.href = './results/';
-        combineData();
+        let giphy = document.createElement('img');
+        giphy.id = 'giphy';
+        giphy.src = '../assets/giphy.gif';
+        cardSection.innerHTML = '';
+        cardSection.appendChild(giphy);
+        resultsButton.style.visibility = 'visible';
     }
+
 }
 

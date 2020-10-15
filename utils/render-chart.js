@@ -5,66 +5,88 @@ import { dataSort } from '../data/data-sort.js';
 
 
 export function renderChart(){
-    let object = getChartSelection();
+    let passedObject = getChartSelection();
     let dataSet = getDataSet();
-    dataSet = dataSort('id' ,dataSet);
-    if (object.function === 'infoFromGameData'){
-        return infoFromGameData(dataSet, object.key, object.value)
+    if (passedObject.function === 'infoFromGameData'){
+        return infoFromGameData(dataSet, passedObject);
+    } else if (passedObject.function === 'typesCaptured'){
+        return typesCaptured(dataSet, passedObject);
+    } else if (passedObject.function === 'infoFromPokeArray'){
+        return infoFromPokeArray(dataSet, passedObject);
     }
-    return infoFromPokeArray(dataSet, object.key, object.value);
-    // return object.function(dataSet, object.key, object.value);
 }
 
-export function infoFromGameData(dataSet, key, passedLabel){    
+export function infoFromGameData(dataSet, passedObject){ 
+    dataSet = dataSort(passedObject.key, dataSet, '>');
+    // declaring variables
     let labels = [];
     let data = [];
     let backgroundColor = [];
-    let label = passedLabel;
-
-    for (let object of dataSet){
-        let pokeData = getById(object.id, pokeArray);
-        labels.push(pokeData.pokemon);
-        data.push(object[key]);
-        backgroundColor.push(renderColor(pokeData.type_1))
+    let label = passedObject.value;
+    // increments through passed dataSet (current or long-term)
+    for (let dataObject of dataSet){
+        // retrieves the pokemon referenced in dataSet
+        let pokeData = getById(dataObject.id, pokeArray);
+        if(dataObject[passedObject.key] > 0){
+            labels.push(pokeData.pokemon);
+            data.push(dataObject[passedObject.key]);
+            backgroundColor.push(pokeData.color_1)
+        }
+    }
+    return [labels, data, backgroundColor, label, passedObject.type, passedObject.titleText, passedObject.legend];
     }
 
-    return [labels, data, backgroundColor, label];
-    }
-
-export function infoFromPokeArray(dataSet, key, passedLabel){    
+export function infoFromPokeArray(dataSet, passedObject){    
+    let unsortedArray = [];
     let labels = [];
     let data = [];
     let backgroundColor = [];
-    let label = passedLabel;
+    let label = passedObject.value;
 
-    for (let object of dataSet){
-        let pokeData = getById(object.id, pokeArray);
-
-        labels.push(pokeData.pokemon);
-        data.push(pokeData[key]);
-        backgroundColor.push(renderColor(pokeData.type_1))
+    for (let dataObject of dataSet){
+        let pokeData = getById(dataObject.id, pokeArray);
+        let tempObject = {
+            labels: pokeData.pokemon,
+            data: pokeData[passedObject.key],
+            color: pokeData.color_1,
+        }
+        unsortedArray.push(tempObject)
     }
-    return [labels, data, backgroundColor, label];
+    let sortedArray = dataSort('data', unsortedArray, '>');
+    for (let sortedObject of sortedArray){
+        labels.push(sortedObject['labels']);
+        data.push(sortedObject['data']);
+        backgroundColor.push(sortedObject['color']);
+    }
+    return [labels, data, backgroundColor, label, passedObject.type, passedObject.titleText, passedObject.legend];
     
 }
 
-function renderColor(pokeType){
+export function typesCaptured(dataSet, passedObject){
+    let labels = [];
+    let typeJSON = {};
+    let data = [];
+    let backgroundColor = [];
+    let label = passedObject.value;
 
-    if (pokeType === 'grass'){
-        return '#78C850';
-    } else if (pokeType === 'fire'){
-        return '#F08030';
-    } else if (pokeType === 'water'){
-        return '#6890F0';
-    } else if (pokeType === 'normal'){
-        return '#A8A878';
-    } else if (pokeType === 'bug'){
-        return '#A8B820';
-    } else {
-        return '#0091d9';
+    for (let dataObject of dataSet){
+        let pokeData = getById(dataObject.id, pokeArray);
+        if (!typeJSON[pokeData.type_1]){
+            typeJSON[pokeData.type_1] = [dataObject[passedObject.key], pokeData.color_1];
+        } else {
+            typeJSON[pokeData.type_1][0] += dataObject[passedObject.key];
+        }
     }
-}
 
+    let sortableArray = Object.keys(typeJSON).map(key => ({labels: key, data: typeJSON[key][0], color: typeJSON[key][1]}));
+    sortableArray = dataSort('data', sortableArray, '>');
+    for (let sortedObject of sortableArray){
+        labels.push(sortedObject['labels']);
+        data.push(sortedObject['data']);
+        backgroundColor.push(sortedObject['color']);
+    }
+    return [labels, data, backgroundColor, label, passedObject.type, passedObject.titleText, passedObject.legend];
+}
 
 function getDataSet(){
     let version = getGameData();
