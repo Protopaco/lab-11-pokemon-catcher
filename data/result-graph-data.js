@@ -1,21 +1,48 @@
-import { renderCaptured, renderDisplayed, renderHeight } from '../utils/render-chart.js';
+// import { infoFromGameData, infoFromPokeArray  } from '../utils/render-chart.js';
 
 export default [
     {
         value: 'captured',
-        function: renderCaptured,
+        key: 'captureCount',
+        function: 'infoFromGameData',
         checked: true,
     },
     {
         value: 'viewed',
-        function: renderDisplayed,
+        key: 'displayCount',
+        function: 'infoFromGameData',
         checked: false,
     },
     {
         value: 'height',
-        function: renderHeight,
+        key: 'height',
+        function: 'infoFromPokeArray',
         checked: false,
     },
+    {
+        value: 'weight',
+        key: 'weight',
+        function: 'infoFromPokeArray',
+        checked: false,
+    },
+    {
+        value: 'base experience',
+        key: 'base_experience',
+        function: 'infoFromPokeArray',
+        checked: false,
+    },    
+    {
+        value: 'hit points',
+        key: 'hp',
+        function: 'infoFromPokeArray',
+        checked: false,
+    },
+    {
+        value: 'speed',
+        key: 'speed',
+        function: 'infoFromPokeArray',
+        checked: false,
+    }
 ]
 
 

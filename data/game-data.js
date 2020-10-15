@@ -2,6 +2,8 @@ import { getById } from "../utils/get-by-id.js";
 
 let gameKey = 'gameData';
 let longTerm = 'longTermGD';
+let dataVersion = 'dataVersion';
+let chartSelection = 'chartSelection';
 
 
 export function getGameData(){
@@ -49,6 +51,21 @@ export function combineData(){
         }
 
     }
-    clearGameData();
     sendLTData(longTermData);
+}
+
+export function setChartVersionSelection(versionKey){
+    localStorage.setItem(dataVersion, JSON.stringify(versionKey));
+}
+
+export function getChartVersionSelection(){
+    return JSON.parse(localStorage.getItem(dataVersion));
+}
+
+export function setChartSelection(chartObject){
+    localStorage.setItem(chartSelection, JSON.stringify(chartObject));
+}
+
+export function getChartSelection(){
+    return JSON.parse(localStorage.getItem(chartSelection));
 }
