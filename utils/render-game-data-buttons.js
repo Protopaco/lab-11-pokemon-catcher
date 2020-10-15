@@ -1,4 +1,4 @@
-import { getGameData, getLTData, setChartVersionSelection } from "../data/game-data.js";
+import { getGameData, setChartVersionSelection } from "../data/game-data.js";
 import { renderCanvas } from "./render-canvas.js";
 import dataOptions from "../data/data-view-options.js";
 

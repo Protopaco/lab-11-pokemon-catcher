@@ -27,14 +27,13 @@ export function infoFromGameData(dataSet, passedObject){
     for (let dataObject of dataSet){
         // retrieves the pokemon referenced in dataSet
         let pokeData = getById(dataObject.id, pokeArray);
-
         if(dataObject[passedObject.key] > 0){
             labels.push(pokeData.pokemon);
             data.push(dataObject[passedObject.key]);
             backgroundColor.push(pokeData.color_1)
         }
     }
-    return [labels, data, backgroundColor, label, passedObject.type];
+    return [labels, data, backgroundColor, label, passedObject.type, passedObject.titleText, passedObject.legend];
     }
 
 export function infoFromPokeArray(dataSet, passedObject){    
@@ -59,12 +58,11 @@ export function infoFromPokeArray(dataSet, passedObject){
         data.push(sortedObject['data']);
         backgroundColor.push(sortedObject['color']);
     }
-    return [labels, data, backgroundColor, label, passedObject.type];
+    return [labels, data, backgroundColor, label, passedObject.type, passedObject.titleText, passedObject.legend];
     
 }
 
 export function typesCaptured(dataSet, passedObject){
-
     let labels = [];
     let typeJSON = {};
     let data = [];
@@ -87,7 +85,7 @@ export function typesCaptured(dataSet, passedObject){
         data.push(sortedObject['data']);
         backgroundColor.push(sortedObject['color']);
     }
-    return [labels, data, backgroundColor, label, passedObject.type];
+    return [labels, data, backgroundColor, label, passedObject.type, passedObject.titleText, passedObject.legend];
 }
 
 function getDataSet(){

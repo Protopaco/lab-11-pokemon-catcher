@@ -32,7 +32,7 @@ input {
     text-align: center;
     margin: 0;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid #CC0000;
 }
 
 .poke-image{
@@ -48,13 +48,42 @@ label{
     width: 250px;
     height: 400px;
     margin-top: 20px;
-    border: 2px solid black;
+    border: 2px solid #CC0000;
     border-radius: 20px;
 }
-
-
 
 label > p {
     font-size: 1.5em;
     text-align: center;
+}
+
+button{
+    background-color: #CC0000;
+    color: #FFDE00;
+    width: 200px;
+    height: 100px;
+    border: 0;
+    border-radius: 15px;
+    font-size: 2.5em;
+    outline: none;
+    box-shadow: 2px 2px 3px;
+    margin: 10px;
+}
+
+button:active{
+    box-shadow: none;
+}
+
+.results-button{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: white;
+    visibility: hidden;
+}
+
+#giphy{
+    height: 250px;
+    margin-top: 100px;
 }
